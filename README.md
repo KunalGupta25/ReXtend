@@ -38,9 +38,71 @@ ReXtend does not require Git. During discovery it must preserve existing files a
 
 ## Installation
 
-This follows the portable Agent Skills folder convention. Install the complete `rextend/` directory in the skills directory supported by your AI agent. Keep the directory name aligned with the `name` field in `SKILL.md` (`rextend`).
+ReXtend follows the portable Agent Skills folder convention. The skill folder must be named **`rextend`** (lowercase), matching the `name` field in `SKILL.md`.
 
-For project-local installation, use a location supported by your agent environment, for example `.agents/skills/rextend/`.
+### Method 1: Global Installation (Available across all projects)
+
+Clone the repository directly into your AI agent's global skills directory:
+
+#### Antigravity / Gemini CLI
+
+- **macOS / Linux:**
+  ```bash
+  git clone https://github.com/KunalGupta25/ReXtend.git ~/.gemini/config/skills/rextend
+  ```
+
+- **Windows (PowerShell):**
+  ```powershell
+  git clone https://github.com/KunalGupta25/ReXtend.git "$HOME\.gemini\config\skills\rextend"
+  ```
+
+#### Claude Code
+
+- **macOS / Linux:**
+  ```bash
+  git clone https://github.com/KunalGupta25/ReXtend.git ~/.claude/skills/rextend
+  ```
+
+- **Windows (PowerShell):**
+  ```powershell
+  git clone https://github.com/KunalGupta25/ReXtend.git "$HOME\.claude\skills\rextend"
+  ```
+
+---
+
+### Method 2: Project-Local Installation (Available within a specific project)
+
+Install into your target project's root directory under `.agents/skills/rextend` (supported by most portable agent environments):
+
+- **Direct clone:**
+  ```bash
+  git clone https://github.com/KunalGupta25/ReXtend.git .agents/skills/rextend
+  ```
+
+- **Or as a Git Submodule:**
+  ```bash
+  git submodule add https://github.com/KunalGupta25/ReXtend.git .agents/skills/rextend
+  ```
+
+*(If your environment uses `.gemini/skills/` or `.claude/skills/`, clone into that location instead.)*
+
+---
+
+### Method 3: Manual Download (Without Git)
+
+1. Download the repository source as a ZIP:
+   - [Download ZIP](https://github.com/KunalGupta25/ReXtend/archive/refs/heads/main.zip)
+2. Extract the archive.
+3. Rename the extracted folder (e.g. `ReXtend-main`) to **`rextend`**.
+4. Move the `rextend` folder into your global or project-local skills directory.
+
+---
+
+### Verification
+
+To verify that the skill is loaded and active, start a turn with your agent and prompt:
+
+> Use the ReXtend skill. Inspect this project and summarize its architecture.
 
 ## First-use prompt: understand an existing project
 
