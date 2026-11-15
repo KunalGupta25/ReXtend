@@ -40,7 +40,21 @@ ReXtend does not require Git. During discovery it must preserve existing files a
 
 ReXtend follows the portable Agent Skills folder convention. The skill folder must be named **`rextend`** (lowercase), matching the `name` field in `SKILL.md`.
 
-### Method 1: Global Installation (Available across all projects)
+### Quick Install with `npx skills` (Recommended)
+
+Using the official [Agent Skills CLI](https://skills.sh):
+
+```bash
+# Install to current project
+npx skills add KunalGupta25/ReXtend
+
+# Or install globally across all supported agents
+npx skills add KunalGupta25/ReXtend -g
+```
+
+---
+
+### Method 1: Global Installation via Git
 
 Clone the repository directly into your AI agent's global skills directory:
 
