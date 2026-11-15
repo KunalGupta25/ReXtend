@@ -18,13 +18,13 @@ ReXtend works with remote repositories, local Git checkouts, non-Git project fol
 - **Test:** Design and execute staged unit, integration, contract, API, UI, E2E, regression, security, performance, and acceptance test suites.
 - **Validate:** Compare expected and actual behavior, verify compatibility, and keep documentation aligned with the code.
 
-## Get the skill
+## Package contents
 
-The complete installable package—including `SKILL.md`, detailed playbooks, project documentation templates, and inventory scripts—is available here:
-
-**[Download ReXtend v1.2.0](https://github.com/KunalGupta25/ReXtend/raw/main/rextend-v1.2.0.zip)**
-
-Extract the archive and install the `rextend/` folder in the skills directory supported by your AI agent. The skill identifier is `rextend` (lowercase).
+- `SKILL.md` — main skill instructions and workflow router.
+- `references/` — detailed playbooks for discovery, reverse engineering, architecture/security/quality, feature implementation, testing, documentation, project entry modes, and safe tooling.
+- `templates/` — reusable Markdown templates for project knowledge, architecture, features, module dossiers, APIs, data dictionaries, parity, testing, and ADRs.
+- `scripts/project_inventory.py` — read-only local project inventory helper. Works with or without Git.
+- `scripts/repo_inventory.py` — backwards-compatible alias for the earlier helper name.
 
 ## Supported project sources
 
@@ -34,15 +34,31 @@ Extract the archive and install the `rextend/` folder in the skills directory su
 4. Existing configured or running application, with source when available.
 5. Monorepo, multi-package workspace, or collection of related repositories.
 
-## Engineering principles
+ReXtend does not require Git. During discovery it must preserve existing files and local changes, avoid destructive operations, and never read or disclose secret values.
+
+## Installation
+
+This follows the portable Agent Skills folder convention. Install the complete `rextend/` directory in the skills directory supported by your AI agent. Keep the directory name aligned with the `name` field in `SKILL.md` (`rextend`).
+
+For project-local installation, use a location supported by your agent environment, for example `.agents/skills/rextend/`.
+
+## First-use prompt: understand an existing project
+
+> Use the ReXtend skill. Deeply inspect the project source I have provided, whether it is a remote repository, local Git checkout, ordinary local folder, running application, or multi-project workspace. First establish the project root, source type, scope, and access boundaries. Inspect read-only before making changes. Build an evidence-backed understanding of the product, business domain, architecture, modules, dependencies, data model, APIs, integrations, runtime workflows, security, operations, and existing tests. Distinguish verified facts from inferences, assumptions, unknowns, and contradictions. Create or update a persistent project knowledge base using the existing documentation conventions. Do not implement product changes during initial discovery. Report the understood scope, evidence, gaps, risks, and recommended next steps.
+
+## First-use prompt: build a feature that fits
+
+> Use ReXtend and the existing project knowledge base. Before coding, inspect the relevant module and trace the requested behavior through UI, API, domain logic, persistence, permissions, events/jobs, integrations, and tests. Identify existing conventions and dependencies. Produce a concise impact analysis, acceptance criteria, implementation plan, and staged test plan. Implement the smallest complete vertical slice that fits the existing product and architecture. Run relevant tests, add regression coverage, update affected documentation and the feature parity matrix, and report changed files, verification evidence, and remaining risks.
+
+## Safety and engineering principles
 
 - Evidence before conclusions; record provenance and confidence.
 - Understand affected behavior before changing it.
-- Respect the existing architecture and UX conventions.
+- Respect the existing architecture and UX conventions; do not impose unnecessary technologies or patterns.
 - Start read-only and preserve user changes.
 - Do not expose secrets or sensitive project data.
 - Use small, reviewable, testable vertical slices.
-- Design tests from requirements, architecture, risks, and observed behavior.
+- Design tests from requirements, architecture, risks, and observed behavior—not only from implementation details.
 - Keep project knowledge synchronized with code and verified runtime behavior.
 
 ## Version
